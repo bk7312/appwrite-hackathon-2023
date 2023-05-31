@@ -1,3 +1,7 @@
+import * as dotenv from 'dotenv'
+
+dotenv.config()
+
 
 export const Server = {
     endpoint : process.env.REACT_APP_ENDPOINT,
