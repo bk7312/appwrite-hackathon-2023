@@ -18,6 +18,7 @@ export async function loader({ request }) {
         console.log(`login`, e)
         return new URL(request.url).searchParams.get("message")
     }
+    return null
 }
 
 export async function action({ request }) {
