@@ -6,7 +6,8 @@
 import Home from './pages/Home'
 import About from './pages/About'
 import Login, { loader as loginLoader, action as loginAction } from './pages/Login'
-// import Logout, { loader as logoutLoader } from './pages/Logout'
+import Signup, { loader as signupLoader, action as signupAction } from './pages/Signup'
+import Logout, { loader as logoutLoader } from './pages/Logout'
 import Town2 from './pages/Town2'
 import NotFound from './pages/NotFound'
 import Layout from './components/Layout'
@@ -33,11 +34,17 @@ const router = createBrowserRouter(createRoutesFromElements(
       loader={loginLoader}
       action={loginAction} 
     />
-    {/* <Route 
+    <Route 
+      path="signup"
+      element={<Signup />} 
+      loader={signupLoader} 
+      action={signupAction} 
+    />
+    <Route 
       path="logout"
       element={<Logout />} 
       loader={logoutLoader} 
-    /> */}
+    />
     <Route 
       path="town2" 
       element={<Town2 />} 
