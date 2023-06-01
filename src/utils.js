@@ -10,7 +10,7 @@ export async function checkAuth(request) {
     } catch(e) {
         console.log(e)
         throw redirect(
-            `/login?message=You must log in first.&redirectTo=${pathname}`
+            `/login?redirectTo=${pathname}`
         )
     }
 
