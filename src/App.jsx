@@ -8,9 +8,11 @@ import About from './pages/About'
 import Login, { loader as loginLoader, action as loginAction } from './pages/Login'
 import Signup, { loader as signupLoader, action as signupAction } from './pages/Signup'
 import Logout, { loader as logoutLoader } from './pages/Logout'
-import Town2 from './pages/Town2'
+import Town2 from './pages/town2/Town2'
+import Profile, { action as profileAction } from './pages/town2/Profile'
 import NotFound from './pages/NotFound'
 import Layout from './components/Layout'
+import TownLayout from './components/TownLayout'
 import Error from './components/Error'
 // import { UserContext } from './context/UserContext'
 
@@ -25,35 +27,45 @@ import {
 
 
 const router = createBrowserRouter(createRoutesFromElements(
-  <Route path="/" element={<Layout/>} errorElement={<Error/>}>
-    <Route index element={<Home/>}/>
-    <Route path="about" element={<About />} />
-    <Route 
-      path="login" 
-      element={<Login />} 
-      loader={loginLoader}
-      action={loginAction} 
-    />
-    <Route 
-      path="signup"
-      element={<Signup />} 
-      loader={signupLoader} 
-      action={signupAction} 
-    />
-    <Route 
-      path="logout"
-      element={<Logout />} 
-      loader={logoutLoader} 
-    />
+  <Route>
+    <Route path="/" element={<Layout/>} errorElement={<Error/>}>
+      <Route index element={<Home/>}/>
+      <Route path="about" element={<About />} />
+      <Route 
+        path="login" 
+        element={<Login />} 
+        loader={loginLoader}
+        action={loginAction} 
+      />
+      <Route 
+        path="signup"
+        element={<Signup />} 
+        loader={signupLoader} 
+        action={signupAction} 
+      />
+      <Route 
+        path="logout"
+        element={<Logout />} 
+        loader={logoutLoader} 
+      />
+      <Route path="*" element={<NotFound />}/>
+    </Route>
     <Route 
       path="town2" 
-      element={<Town2 />} 
+      element={<TownLayout />} 
       loader={async ({ request }) => {
         await checkAuth(request)
         return null
       }}
-    />
-    <Route path="*" element={<NotFound />}/>
+      errorElement={<Error/>}
+    >
+      <Route index element={<Town2/>}/>
+      <Route 
+        path="profile" 
+        element={<Profile/>}
+        action={profileAction}
+      />
+    </Route>
   </Route>
 ))
 

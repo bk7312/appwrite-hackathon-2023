@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function Home() {
     const textShadow = {
-        textShadow: '0px 0px 0.5em black, 0 0 1em black, 0 0 1.5em black'
+        textShadow: '0px 0px 1px black, 0 0 4px black, 0 0 6px black'
     }
     return (
         <div

@@ -59,13 +59,13 @@ export default function Login() {
                     name="email"
                     type="email"
                     placeholder="Email address"
-                    className="border rounded-full px-8 py-2 my-2 mt-8"
+                    className="border rounded-full px-8 py-2 my-2 mt-8 dark:bg-gray-900"
                 />
                 <input
                     name="password"
                     type="password"
                     placeholder="Password"
-                    className="border rounded-full px-8 py-2 my-2"
+                    className="border rounded-full px-8 py-2 my-2 dark:bg-gray-900"
                 />
                 <button
                     disabled={navigation.state === "submitting"}
