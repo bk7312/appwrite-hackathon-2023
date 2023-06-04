@@ -13,7 +13,7 @@ export async function loader({ request }) {
     try {
         const isLoggedIn = await checkUser()
         console.log("signupLoader", isLoggedIn)
-        return redirect('/town2')
+        return redirect('/forum')
     } catch(e) {
         console.log(`signupLoader`, e)
         const message = new URL(request.url).searchParams.get("redirectTo")

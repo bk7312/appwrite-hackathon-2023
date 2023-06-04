@@ -8,8 +8,10 @@ import About from './pages/About'
 import Login, { loader as loginLoader, action as loginAction } from './pages/Login'
 import Signup, { loader as signupLoader, action as signupAction } from './pages/Signup'
 import Logout, { loader as logoutLoader } from './pages/Logout'
-import Town2 from './pages/town2/Town2'
-import Profile, { action as profileAction } from './pages/town2/Profile'
+import Forum from './pages/forum/Forum'
+import Profile, { action as profileAction } from './pages/forum/Profile'
+import ForumSection, { loader as forumSectionLoader } from './pages/forum/ForumSection'
+import ForumThread, { loader as forumThreadLoader } from './pages/forum/ForumThread'
 import NotFound from './pages/NotFound'
 import Layout from './components/Layout'
 import TownLayout from './components/TownLayout'
@@ -51,7 +53,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route path="*" element={<NotFound />}/>
     </Route>
     <Route 
-      path="town2" 
+      path="forum" 
       element={<TownLayout />} 
       loader={async ({ request }) => {
         await checkAuth(request)
@@ -59,7 +61,17 @@ const router = createBrowserRouter(createRoutesFromElements(
       }}
       errorElement={<Error/>}
     >
-      <Route index element={<Town2/>}/>
+      <Route index element={<Forum/>}/>
+      <Route 
+        path=':section' 
+        element={<ForumSection/>}
+        loader={forumSectionLoader}
+      />
+      <Route 
+        path=':section/:post' 
+        element={<ForumThread/>}
+        loader={forumThreadLoader}
+      />
       <Route 
         path="profile" 
         element={<Profile/>}

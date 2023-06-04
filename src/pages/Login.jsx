@@ -14,7 +14,7 @@ export async function loader({ request }) {
     try {
         const isLoggedIn = await checkUser()
         console.log("loginLoader", isLoggedIn)
-        return redirect('/town2')
+        return redirect('/forum')
     } catch(e) {
         console.log(`loginLoader`, e)
         const message = new URL(request.url).searchParams.get("redirectTo")
@@ -27,7 +27,7 @@ export async function action({ request }) {
     const email = formData.get("email")
     const password = formData.get("password")
     const pathname = new URL(request.url)
-        .searchParams.get("redirectTo") || "/town2"
+        .searchParams.get("redirectTo") || "/forum"
     
     try {
         const data = await loginUser({ email, password })

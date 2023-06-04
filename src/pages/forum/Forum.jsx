@@ -1,19 +1,22 @@
 // import React from "react"
 // import { Link } from 'react-router-dom'
 import ForumMenu from "../../components/ForumMenu"
-import ForumThread from "../../components/ForumThread"
+import { 
+    getDocList,
+    createDoc,
+    getDoc,
+    updateDoc, 
+} from "../../api"
 
-export default function Town2() {
+export default function Forum() {
     return (
         <div className="h-full">
             <h1 className='text-4xl font-bold mt-12 py-2 text-center'>
-                Main Page
+                Forum page
             </h1>
-            <div className="flex justify-evenly">
+            <div className="flex flex-col">
                 <ForumMenu/>
-                <ForumThread/>
             </div>
-                
         </div>
     )
 }

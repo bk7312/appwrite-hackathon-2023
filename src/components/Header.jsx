@@ -17,7 +17,7 @@ export default function Header() {
                     Home
                 </NavLink>
                 <NavLink 
-                    to="town2" 
+                    to="forum" 
                     className={({ isActive }) => isActive ? 'underline' : null}
                 >
                     Town²
