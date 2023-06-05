@@ -1,12 +1,19 @@
-// import React from "react"
 
 export default function ForumPost(prop) {
-    console.log(prop)
+    const { text } = prop
+    
+    if (text) {
+        return <p>{text}</p>
+    }
     return (
-        <>
-            <h1 className='text-xl font-bold mt-12 py-2 text-center'>
-                Forum Post
-            </h1>
-        </>
+        <div className="container mx-auto p-2">
+            <h4 className='text-lg font-bold mt-2 py-2'>
+                {prop.data.title}
+            </h4>
+            <p>{prop.data.postData[0].slice(0, 100).trim() + "..."}</p>
+            <p className='text-sm mt-2 py-2'>
+                Posted by: {prop.data.user}
+            </p>
+        </div>
     )
 }

@@ -1,12 +1,5 @@
-// import React from "react"
-// import { Link } from 'react-router-dom'
+
 import ForumMenu from "../../components/ForumMenu"
-import { 
-    getDocList,
-    createDoc,
-    getDoc,
-    updateDoc, 
-} from "../../api"
 
 export default function Forum() {
     return (

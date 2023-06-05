@@ -37,23 +37,39 @@ function updatePassword(newPassword, oldPassword) {
     return account.updatePassword(newPassword, oldPassword)
 }
 
-function getDocList(col) {
-    return database.listDocuments(Server.database, Server[col])
+// async function getMap(){
+//     const data = await database.listDocuments(Server.database, Server.mapCol)
+//     const map = {}
+//     data.documents.forEach(doc => {
+//         map[doc.link] = {
+//             list: doc.listID,
+//             post: doc.postID,
+//         }
+//     })
+//     console.log("async", map)
+//     return map
+// }
+// const map = getMap()
+// console.log("outside", map)
+
+function getThreads(col) {
+    return database.listDocuments(Server.database, Server[col].list)
 }
 
-function createDoc(col, doc, data) {
-    return database.createDocuments(Server.database, Server[col], doc, data)
+function createThread(col, data) {
+    return database.createDocument(Server.database, Server[col].list, ID.unique(), data)
 }
 
-function getDoc(col, doc) {
-    return database.getDocument(Server.database, Server[col], doc)
+function getPosts(col, doc) {
+    return database.getDocument(Server.database, Server[col].post, doc)
 }
 
-function updateDoc(col, doc, data) {
-    return database.updateDocuments(Server.database, Server[col], doc, data)
+function replyPost(col, doc, data) {
+    return database.createDocument(Server.database, Server[col].post, doc, data)
 }
 
 // probably refactor, return user/database object instead of individual functions
+// change in db structure
 
 export { 
     createUser, 
@@ -62,8 +78,8 @@ export {
     checkUser,
     updateEmail,
     updatePassword,
-    getDocList,
-    createDoc,
-    getDoc,
-    updateDoc,
+    getThreads,
+    createThread,
+    getPosts,
+    replyPost,
 }

@@ -1,5 +1,4 @@
 
-// import { useContext } from "react"
 import {
     useLoaderData,
     useNavigation,
@@ -7,7 +6,7 @@ import {
     redirect,
     useActionData
 } from "react-router-dom"
-import { createUser, checkUser } from "../api"
+import { createUser, checkUser } from "../appwrite"
 
 export async function loader({ request }) {
     try {
@@ -58,17 +57,17 @@ export default function Signup() {
                     name="email"
                     type="email"
                     placeholder="Email address"
-                    className="border rounded-full px-8 py-2 my-2 mt-8"
+                    className="border rounded px-8 py-2 my-2 mt-8"
                 />
                 <input
                     name="password"
                     type="password"
                     placeholder="Password"
-                    className="border rounded-full px-8 py-2 my-2"
+                    className="border rounded px-8 py-2 my-2"
                 />
                 <button
                     disabled={navigation.state === "submitting"}
-                    className='border w-80 py-2 my-2 rounded-full bg-sky-600 mx-auto font-bold border-neutral-600  text-gray-50'
+                    className='border w-80 py-2 my-2 rounded bg-sky-600 mx-auto font-bold border-neutral-600  text-gray-50'
                 >
                     {navigation.state === "submitting"
                         ? "Creating account..."

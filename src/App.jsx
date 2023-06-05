@@ -1,7 +1,3 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
 
 import Home from './pages/Home'
 import About from './pages/About'
@@ -10,13 +6,12 @@ import Signup, { loader as signupLoader, action as signupAction } from './pages/
 import Logout, { loader as logoutLoader } from './pages/Logout'
 import Forum from './pages/forum/Forum'
 import Profile, { action as profileAction } from './pages/forum/Profile'
-import ForumSection, { loader as forumSectionLoader } from './pages/forum/ForumSection'
-import ForumThread, { loader as forumThreadLoader } from './pages/forum/ForumThread'
+import ForumSection, { loader as forumSectionLoader, action as forumSectionAction } from './pages/forum/ForumSection'
+import ForumThread, { loader as forumThreadLoader, action as forumThreadAction } from './pages/forum/ForumThread'
 import NotFound from './pages/NotFound'
 import Layout from './components/Layout'
 import TownLayout from './components/TownLayout'
 import Error from './components/Error'
-// import { UserContext } from './context/UserContext'
 
 import { checkAuth } from './utils'
 
@@ -66,11 +61,13 @@ const router = createBrowserRouter(createRoutesFromElements(
         path=':section' 
         element={<ForumSection/>}
         loader={forumSectionLoader}
+        action={forumSectionAction}
       />
       <Route 
         path=':section/:post' 
         element={<ForumThread/>}
         loader={forumThreadLoader}
+        action={forumThreadAction}
       />
       <Route 
         path="profile" 

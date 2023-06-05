@@ -1,6 +1,6 @@
 import { useRef } from "react"
 import { Form, useNavigation, useActionData } from 'react-router-dom'
-import { updateEmail, updatePassword } from '../../api'
+import { updateEmail, updatePassword } from '../../appwrite'
 
 export async function action({ request }) {
     const formData = await request.formData()
@@ -59,17 +59,17 @@ export default function Profile() {
                     name="email"
                     type="email"
                     placeholder="Email address"
-                    className="border rounded-full px-8 py-2 my-2 dark:bg-gray-900"
+                    className="border rounded px-8 py-2 my-2 dark:bg-gray-900"
                 />
                 <input
                     name="password"
                     type="password"
                     placeholder="Password"
-                    className="border rounded-full px-8 py-2 my-2 dark:bg-gray-900"
+                    className="border rounded px-8 py-2 my-2 dark:bg-gray-900"
                 />
                 <button
                     disabled={navigation.state === "submitting"}
-                    className='border w-80 py-2 my-2 rounded-full bg-sky-600 mx-auto font-bold border-neutral-600  text-gray-50'
+                    className='border w-80 py-2 my-2 rounded bg-sky-600 mx-auto font-bold border-neutral-600  text-gray-50'
                     name="intent"
                     value="updateEmail"
                 >
@@ -88,17 +88,17 @@ export default function Profile() {
                     name="new-password"
                     type="password"
                     placeholder="New Password"
-                    className="border rounded-full px-8 py-2 my-2 dark:bg-gray-900"
+                    className="border rounded px-8 py-2 my-2 dark:bg-gray-900"
                 />
                 <input
                     name="old-password"
                     type="password"
                     placeholder="Old Password"
-                    className="border rounded-full px-8 py-2 my-2 dark:bg-gray-900"
+                    className="border rounded px-8 py-2 my-2 dark:bg-gray-900"
                 />
                 <button
                     disabled={navigation.state === "submitting"}
-                    className='border w-80 py-2 my-2 rounded-full bg-sky-600 mx-auto font-bold border-neutral-600  text-gray-50'
+                    className='border w-80 py-2 my-2 rounded bg-sky-600 mx-auto font-bold border-neutral-600  text-gray-50'
                     name="intent"
                     value="updatePassword"
                     
