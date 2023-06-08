@@ -4,27 +4,26 @@ export default function Header() {
     
     return (
         <header className="flex place-content-between text-2xl p-4">
-            <Link to="/">Town Square</Link>
+            <Link to=".">Town Square</Link>
             <nav className="flex gap-4 text-lg items-center">
                 <NavLink 
                     to="." 
                     end
                     className={({ isActive }) => isActive ? 'underline' : null}
                 >
-                    Home
-                </NavLink>
-                <NavLink 
-                    to="forum" 
-                    className={({ isActive }) => isActive ? 'underline' : null}
-                >
                     Town²
                 </NavLink>
                 <NavLink 
-                    to="about" 
+                    to="profile" 
                     className={({ isActive }) => isActive ? 'underline' : null}
                 >
-                    About
+                    Profile
                 </NavLink>
+                <Link 
+                    to="/logout"
+                >
+                    Logout
+                </Link>
             </nav>
         </header>
     )

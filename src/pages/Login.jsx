@@ -1,5 +1,4 @@
 
-// import { useContext } from "react"
 import {
     useLoaderData,
     useNavigation,
@@ -8,13 +7,13 @@ import {
     redirect,
     useActionData
 } from "react-router-dom"
-import { loginUser, checkUser } from "../api"
+import { loginUser, checkUser } from "../appwrite"
 
 export async function loader({ request }) {
     try {
         const isLoggedIn = await checkUser()
         console.log("loginLoader", isLoggedIn)
-        return redirect('/town2')
+        return redirect('/forum')
     } catch(e) {
         console.log(`loginLoader`, e)
         const message = new URL(request.url).searchParams.get("redirectTo")
@@ -27,7 +26,7 @@ export async function action({ request }) {
     const email = formData.get("email")
     const password = formData.get("password")
     const pathname = new URL(request.url)
-        .searchParams.get("redirectTo") || "/town2"
+        .searchParams.get("redirectTo") || "/forum"
     
     try {
         const data = await loginUser({ email, password })
@@ -59,17 +58,19 @@ export default function Login() {
                     name="email"
                     type="email"
                     placeholder="Email address"
-                    className="border rounded-full px-8 py-2 my-2 mt-8"
+                    className="border rounded px-8 py-2 my-2 mt-8 dark:bg-gray-900"
+                    required
                 />
                 <input
                     name="password"
                     type="password"
                     placeholder="Password"
-                    className="border rounded-full px-8 py-2 my-2"
+                    className="border rounded px-8 py-2 my-2 dark:bg-gray-900"
+                    required
                 />
                 <button
                     disabled={navigation.state === "submitting"}
-                    className='border w-80 py-2 my-2 rounded-full bg-sky-600 mx-auto font-bold border-neutral-600  text-gray-50'
+                    className='border w-80 py-2 my-2 rounded bg-sky-600 mx-auto font-bold border-neutral-600  text-gray-50'
                 >
                     {navigation.state === "submitting"
                         ? "Logging in..."
