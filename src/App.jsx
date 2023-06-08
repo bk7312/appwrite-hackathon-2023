@@ -4,7 +4,7 @@ import About from './pages/About'
 import Login, { loader as loginLoader, action as loginAction } from './pages/Login'
 import Signup, { loader as signupLoader, action as signupAction } from './pages/Signup'
 import Logout, { loader as logoutLoader } from './pages/Logout'
-import Forum from './pages/forum/Forum'
+import Forum, { loader as forumLoader } from './pages/forum/Forum'
 import Profile, { action as profileAction } from './pages/forum/Profile'
 import ForumSection, { loader as forumSectionLoader, action as forumSectionAction } from './pages/forum/ForumSection'
 import ForumThread, { loader as forumThreadLoader, action as forumThreadAction } from './pages/forum/ForumThread'
@@ -56,7 +56,11 @@ const router = createBrowserRouter(createRoutesFromElements(
       }}
       errorElement={<Error/>}
     >
-      <Route index element={<Forum/>}/>
+      <Route 
+        index 
+        element={<Forum/>}
+        loader={forumLoader}
+      />
       <Route 
         path=':section' 
         element={<ForumSection/>}

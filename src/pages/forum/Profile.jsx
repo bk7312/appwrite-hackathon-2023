@@ -60,12 +60,14 @@ export default function Profile() {
                     type="email"
                     placeholder="Email address"
                     className="border rounded px-8 py-2 my-2 dark:bg-gray-900"
+                    required
                 />
                 <input
                     name="password"
                     type="password"
                     placeholder="Password"
                     className="border rounded px-8 py-2 my-2 dark:bg-gray-900"
+                    required
                 />
                 <button
                     disabled={navigation.state === "submitting"}
@@ -89,19 +91,20 @@ export default function Profile() {
                     type="password"
                     placeholder="New Password"
                     className="border rounded px-8 py-2 my-2 dark:bg-gray-900"
+                    required
                 />
                 <input
                     name="old-password"
                     type="password"
                     placeholder="Old Password"
                     className="border rounded px-8 py-2 my-2 dark:bg-gray-900"
+                    required
                 />
                 <button
                     disabled={navigation.state === "submitting"}
                     className='border w-80 py-2 my-2 rounded bg-sky-600 mx-auto font-bold border-neutral-600  text-gray-50'
                     name="intent"
                     value="updatePassword"
-                    
                 >
                     Update Password
                 </button>

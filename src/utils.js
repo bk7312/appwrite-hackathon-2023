@@ -6,7 +6,9 @@ export async function checkAuth(request) {
     
     try {
         const user = await checkUser()
-        console.log(user)
+        const { name, $id } = user
+        localStorage.setItem("user", JSON.stringify({name, $id}))
+        console.log(user, name, $id)
     } catch(e) {
         console.log(e)
         throw redirect(

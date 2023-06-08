@@ -24,11 +24,12 @@ export async function action({ request }) {
     const formData = await request.formData()
     const email = formData.get("email")
     const password = formData.get("password")
+    const name = formData.get("name")
     const pathname = new URL(request.url)
         .searchParams.get("redirectTo") || "/login"
     
     try {
-        const data = await createUser({ email, password })
+        const data = await createUser({ email, password, name })
         console.log(data)
         return redirect(pathname)
     } catch(error) {
@@ -54,16 +55,25 @@ export default function Signup() {
                 replace
             >
                 <input
+                    name="name"
+                    type="text"
+                    placeholder="User name"
+                    className="border rounded px-8 py-2 my-2 mt-8"
+                    required
+                />
+                <input
                     name="email"
                     type="email"
                     placeholder="Email address"
-                    className="border rounded px-8 py-2 my-2 mt-8"
+                    className="border rounded px-8 py-2 my-2"
+                    required
                 />
                 <input
                     name="password"
                     type="password"
                     placeholder="Password"
                     className="border rounded px-8 py-2 my-2"
+                    required
                 />
                 <button
                     disabled={navigation.state === "submitting"}

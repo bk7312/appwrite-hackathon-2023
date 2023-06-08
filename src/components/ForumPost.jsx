@@ -1,19 +1,32 @@
 
 export default function ForumPost(prop) {
-    const { text } = prop
-    
-    if (text) {
-        return <p>{text}</p>
+
+    let postText = prop.data.post
+    if (prop.excerpt) {
+        if (postText.length > 310) {
+            postText = postText.slice(0, 300).trim() + "..."
+        }
     }
+    const date = prop.data.$createdAt.slice(0, 10)
+    const time = prop.data.$createdAt.slice(11, 16)
+
     return (
-        <div className="container mx-auto p-2">
-            <h4 className='text-lg font-bold mt-2 py-2'>
-                {prop.data.title}
-            </h4>
-            <p>{prop.data.postData[0].slice(0, 100).trim() + "..."}</p>
-            <p className='text-sm mt-2 py-2'>
-                Posted by: {prop.data.user}
-            </p>
+        <div className="container mx-auto my-2 px-8 py-4 border rounded">
+            {
+                prop.data.title && 
+                <h4 className='text-xl font-bold py-2'>
+                    {prop.data.title}
+                </h4>
+            }
+            <p className="leading-relaxed text-lg py-2">{postText}</p>
+            <div className="flex justify-between flex-wrap gap-x-6 text-sm py-2 mt-2">
+                <p className=''>
+                    Posted by {prop.data.user}
+                </p>
+                <p className=''>
+                    Posted on {date}, {time} GMT
+                </p>
+            </div>
         </div>
     )
 }
