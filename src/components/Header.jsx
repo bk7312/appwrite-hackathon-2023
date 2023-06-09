@@ -9,19 +9,19 @@ export default function Header() {
                 <NavLink 
                     to="." 
                     end
-                    className={({ isActive }) => isActive ? 'underline' : null}
+                    className={({ isActive }) => isActive ? 'bg-blue-50 px-2 rounded shadow dark:bg-blue-600' : null}
                 >
                     Home
                 </NavLink>
                 <NavLink 
                     to="forum" 
-                    className={({ isActive }) => isActive ? 'underline' : null}
+                    className={({ isActive }) => isActive ? 'bg-blue-50 px-2 rounded shadow dark:bg-blue-600' : null}
                 >
                     Town²
                 </NavLink>
                 <NavLink 
                     to="about" 
-                    className={({ isActive }) => isActive ? 'underline' : null}
+                    className={({ isActive }) => isActive ? 'bg-blue-50 px-2 rounded shadow dark:bg-blue-600' : null}
                 >
                     About
                 </NavLink>

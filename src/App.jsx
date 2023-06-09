@@ -5,7 +5,8 @@ import Login, { loader as loginLoader, action as loginAction } from './pages/Log
 import Signup, { loader as signupLoader, action as signupAction } from './pages/Signup'
 import Logout, { loader as logoutLoader } from './pages/Logout'
 import Forum, { loader as forumLoader } from './pages/forum/Forum'
-import Profile, { action as profileAction } from './pages/forum/Profile'
+import Profile, { loader as profileLoader, action as profileAction } from './pages/forum/Profile'
+import UserProfile, { loader as userProfileLoader } from './pages/forum/UserProfile'
 import ForumSection, { loader as forumSectionLoader, action as forumSectionAction } from './pages/forum/ForumSection'
 import ForumThread, { loader as forumThreadLoader, action as forumThreadAction } from './pages/forum/ForumThread'
 import NotFound from './pages/NotFound'
@@ -76,7 +77,13 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route 
         path="profile" 
         element={<Profile/>}
+        loader={profileLoader}
         action={profileAction}
+      />
+      <Route 
+        path="profile/:user" 
+        element={<UserProfile/>}
+        loader={userProfileLoader}
       />
     </Route>
   </Route>

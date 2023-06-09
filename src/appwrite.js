@@ -1,4 +1,4 @@
-import { Client, Account, ID, Databases, Query } from 'appwrite'
+import { Client, Account, ID, Databases, Query, Storage } from 'appwrite'
 import { Server } from './config'
 
 const client = new Client()
@@ -7,6 +7,7 @@ client.setEndpoint(Server.endpoint).setProject(Server.project)
 
 const account = new Account(client)
 const database = new Databases(client)
+const storage = new Storage(client)
 
 async function createUser({email, password, name}) {
     const checkName = await database.listDocuments(
@@ -50,8 +51,30 @@ function updatePassword(newPassword, oldPassword) {
     return account.updatePassword(newPassword, oldPassword)
 }
 
-function getMenu(link = null){
-    if (link === null) return database.listDocuments(Server.database, Server.mapCol)
+async function getUserData(user) {
+    const data = await database.listDocuments(Server.database, Server.user, [
+        Query.equal("name", user)
+    ])
+    if (data.total !== 1) throw {error: "User not found"}
+    let picID = data.documents[0].picID
+    if (!picID) picID = "648293be10aeddd79655"
+    const pic = await storage.getFileView(Server.picBucket, picID)
+    return {
+        pic,
+        user: data.documents[0]
+    }
+}
+
+async function updateBio(bio) {
+    const user = await account.get()
+    const userDoc = await database.listDocuments(Server.database, Server.user, [
+        Query.equal("name", user.name)
+    ])
+    return database.updateDocument(Server.database, Server.user, userDoc.documents[0].$id, {bio})
+}
+
+function getMenu(link){
+    if (!link) return database.listDocuments(Server.database, Server.mapCol)
     return database.listDocuments(Server.database, Server.mapCol, [
         Query.equal("link", link)
     ])
@@ -104,6 +127,8 @@ export {
     checkUser,
     updateEmail,
     updatePassword,
+    getUserData,
+    updateBio,
     getMenu,
     getThreads,
     createThread,

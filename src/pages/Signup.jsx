@@ -77,7 +77,7 @@ export default function Signup() {
                 />
                 <button
                     disabled={navigation.state === "submitting"}
-                    className='border w-80 py-2 my-2 rounded bg-sky-600 mx-auto font-bold border-neutral-600  text-gray-50'
+                    className='border w-80 py-2 my-2 rounded bg-blue-600 mx-auto font-bold border-neutral-600  text-gray-50'
                 >
                     {navigation.state === "submitting"
                         ? "Creating account..."
