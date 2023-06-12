@@ -9,13 +9,13 @@ export default function Header() {
                 <NavLink 
                     to="." 
                     end
-                    className={({ isActive }) => isActive ? 'bg-blue-50 px-2 rounded shadow dark:bg-blue-600' : null}
+                    className={({ isActive }) => isActive ? 'bg-blue-50 px-2 rounded shadow dark:bg-blue-600' : 'px-2'}
                 >
                     Town²
                 </NavLink>
                 <NavLink 
                     to="profile" 
-                    className={({ isActive }) => isActive ? 'bg-blue-50 px-2 rounded shado  dark:bg-blue-600' : null}
+                    className={({ isActive }) => isActive ? 'bg-blue-50 px-2 rounded shado  dark:bg-blue-600' : 'px-2'}
                 >
                     Profile
                 </NavLink>

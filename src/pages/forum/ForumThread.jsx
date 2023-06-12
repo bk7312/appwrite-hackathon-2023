@@ -9,27 +9,21 @@ import {
 } from "../../appwrite"
 
 export async function loader({params}) {
-    console.log("loaderFn", params)
     try {
         const data = getPosts(params.section, params.post)
-        console.log("forumThreadLoader", data)
         return data
-    } catch(e) {
-        console.log("forumThreadLoader error", e)
+    } catch(error) {
+        return error
     }
-    return null
 }
 
 export async function action({ params, request }) {
     const formData = await request.formData()
     const post = JSON.stringify(formData.get("reply"))
-    console.log(post)
     try {
-        const data = await replyPost(params.section, {post, threadID: params.post})
-        console.log(data)
+        await replyPost(params.section, {post, threadID: params.post})
         return { success: "Reply posted!" }
     } catch(error) {
-        console.log(error)
         return error.message
     }
 }
@@ -45,11 +39,10 @@ export default function ForumThread() {
         formRef.current.reset()
     }
     function toggleForm() {
-        formRef.current.classList.toggle("hidden")
-        buttonRef.current.classList.toggle("hidden")
+        formRef.current.classList.remove("hidden")
+        buttonRef.current.classList.add("hidden")
         formRef.current.scrollIntoView({ behavior: "smooth" })
     }
-    console.log("loader data", loaderData)
     const posts = loaderData.replies.documents.map((post, i) => <ForumPost key={i} data={post}/>)
     return (
         <div className="grid">

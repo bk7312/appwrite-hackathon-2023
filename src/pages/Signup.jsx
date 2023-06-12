@@ -1,5 +1,6 @@
 
 import {
+    Link,
     useLoaderData,
     useNavigation,
     Form,
@@ -10,11 +11,9 @@ import { createUser, checkUser } from "../appwrite"
 
 export async function loader({ request }) {
     try {
-        const isLoggedIn = await checkUser()
-        console.log("signupLoader", isLoggedIn)
+        await checkUser()
         return redirect('/forum')
-    } catch(e) {
-        console.log(`signupLoader`, e)
+    } catch(error) {
         const message = new URL(request.url).searchParams.get("redirectTo")
         return message ? "You must signup first." : ""
     }
@@ -29,11 +28,9 @@ export async function action({ request }) {
         .searchParams.get("redirectTo") || "/login"
     
     try {
-        const data = await createUser({ email, password, name })
-        console.log(data)
+        await createUser({ email, password, name })
         return redirect(pathname)
     } catch(error) {
-        console.log(error)
         return error.message
     }
 }
@@ -58,21 +55,21 @@ export default function Signup() {
                     name="name"
                     type="text"
                     placeholder="User name"
-                    className="border rounded px-8 py-2 my-2 mt-8"
+                    className="border rounded px-8 py-2 my-2 mt-8 dark:bg-gray-900"
                     required
                 />
                 <input
                     name="email"
                     type="email"
                     placeholder="Email address"
-                    className="border rounded px-8 py-2 my-2"
+                    className="border rounded px-8 py-2 my-2 dark:bg-gray-900"
                     required
                 />
                 <input
                     name="password"
                     type="password"
                     placeholder="Password"
-                    className="border rounded px-8 py-2 my-2"
+                    className="border rounded px-8 py-2 my-2 dark:bg-gray-900"
                     required
                 />
                 <button
@@ -84,6 +81,13 @@ export default function Signup() {
                         : "Sign up"
                     }
                 </button>
+                <Link
+                    to="../login"
+                    relative="path"
+                    className="py-2"
+                >
+                    Already have an account?
+                </Link>
             </Form>
         </div>
     )

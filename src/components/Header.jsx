@@ -7,23 +7,16 @@ export default function Header() {
             <Link to="/">Town Square</Link>
             <nav className="flex gap-4 text-lg items-center">
                 <NavLink 
-                    to="." 
-                    end
-                    className={({ isActive }) => isActive ? 'bg-blue-50 px-2 rounded shadow dark:bg-blue-600' : null}
+                    to="login" 
+                    className={({ isActive }) => isActive ? 'bg-blue-50 px-2 rounded shadow dark:bg-blue-600' : 'px-2'}
                 >
-                    Home
+                    Log in
                 </NavLink>
                 <NavLink 
-                    to="forum" 
-                    className={({ isActive }) => isActive ? 'bg-blue-50 px-2 rounded shadow dark:bg-blue-600' : null}
+                    to="signup" 
+                    className={({ isActive }) => isActive ? 'bg-blue-50 px-2 rounded shadow dark:bg-blue-600' : 'px-2'}
                 >
-                    Town²
-                </NavLink>
-                <NavLink 
-                    to="about" 
-                    className={({ isActive }) => isActive ? 'bg-blue-50 px-2 rounded shadow dark:bg-blue-600' : null}
-                >
-                    About
+                    Sign up
                 </NavLink>
             </nav>
         </header>

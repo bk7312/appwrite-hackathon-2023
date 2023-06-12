@@ -1,6 +1,5 @@
 
 import Home from './pages/Home'
-import About from './pages/About'
 import Login, { loader as loginLoader, action as loginAction } from './pages/Login'
 import Signup, { loader as signupLoader, action as signupAction } from './pages/Signup'
 import Logout, { loader as logoutLoader } from './pages/Logout'
@@ -28,7 +27,6 @@ const router = createBrowserRouter(createRoutesFromElements(
   <Route>
     <Route path="/" element={<Layout/>} errorElement={<Error/>}>
       <Route index element={<Home/>}/>
-      <Route path="about" element={<About />} />
       <Route 
         path="login" 
         element={<Login />} 

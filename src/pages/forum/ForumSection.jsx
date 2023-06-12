@@ -4,14 +4,12 @@ import ForumPost from "../../components/ForumPost"
 import { createThread, getThreads, getMenu } from "../../appwrite"
 
 export async function loader({params}) {
-    console.log(params)
     try {
         const menu = await getMenu(params.section)
         const threads = await getThreads(params.section)
-        console.log("forumSectionLoader", menu, threads)
         return { menu, threads}
-    } catch(e) {
-        console.log("forumSectionLoader error", e)
+    } catch(error) {
+        return error
     }
 }
 
@@ -20,11 +18,9 @@ export async function action({ params, request }) {
     const title = formData.get("title")
     const post = JSON.stringify(formData.get("post"))
     try {
-        const data = await createThread(params.section, {title, post})
-        console.log(data)
+        await createThread(params.section, {title, post})
         return { success: "New thread posted!" }
     } catch(error) {
-        console.log(error)
         return error
     }
 }
@@ -42,10 +38,10 @@ export default function ForumSection() {
         <Link to={doc.$id} key={doc.$id} >
             <ForumPost data={doc} excerpt={true} className="hover:shadow-xl hover:bg-blue-50  hover:dark:bg-blue-950"/>
         </Link>
-    ))
+    )).reverse()
     function toggleForm() {
-        formRef.current.classList.toggle("hidden")
-        buttonRef.current.classList.toggle("hidden")
+        formRef.current.classList.remove("hidden")
+        buttonRef.current.classList.add("hidden")
     }
     return (
         <div className="grid">

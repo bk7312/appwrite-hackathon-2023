@@ -7,6 +7,7 @@ export const Server = {
     mapCol: '647b2cd645d508416a8d',
     user: '646d7bce583874b898e8',
     picBucket: '646d7c668e9be2b0c119',
+    defaultPic: '6486851da5b8e11efc32',
     announcement: {
         list: '647b2d291acb0a1ed207',
         post: '647d9a3b7a435f7739fa',
