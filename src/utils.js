@@ -5,12 +5,8 @@ export async function checkAuth(request) {
     const pathname = new URL(request.url).pathname
     
     try {
-        const user = await checkUser()
-        const { name, $id } = user
-        localStorage.setItem("user", JSON.stringify({name, $id}))
-        console.log(user, name, $id)
-    } catch(e) {
-        console.log(e)
+        await checkUser()
+    } catch(error) {
         throw redirect(
             `/login?redirectTo=${pathname}`
         )

@@ -3,23 +3,19 @@ import { Link, useLoaderData } from "react-router-dom"
 import { getMenu } from "../../appwrite"
 
 export async function loader() {
-    console.log("loaderFn")
     try {
         const data = await getMenu()
-        console.log("forumLoader", data)
         return data
-    } catch(e) {
-        console.log("forumLoader error", e)
+    } catch(error) {
+        return error
     }
-    return null
 }
 
 export default function Forum() {
     const loaderData = useLoaderData()
-    console.log(loaderData)
     const menus = loaderData.documents.map((menu, i) => (
         <Link to={menu.link} key={i}>
-            <div className="container p-6 my-2 border rounded">
+            <div className="container p-6 my-2 border rounded hover:shadow-xl hover:bg-blue-50  hover:dark:bg-blue-950">
                 <h4 className="text-xl font-bold">{menu.title}</h4>
                 <p className="italic pt-2">{menu.description}</p>
             </div>

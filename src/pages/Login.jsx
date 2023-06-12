@@ -11,11 +11,9 @@ import { loginUser, checkUser } from "../appwrite"
 
 export async function loader({ request }) {
     try {
-        const isLoggedIn = await checkUser()
-        console.log("loginLoader", isLoggedIn)
+        await checkUser()
         return redirect('/forum')
-    } catch(e) {
-        console.log(`loginLoader`, e)
+    } catch(error) {
         const message = new URL(request.url).searchParams.get("redirectTo")
         return message ? "You must login first." : ""
     }
@@ -29,11 +27,9 @@ export async function action({ request }) {
         .searchParams.get("redirectTo") || "/forum"
     
     try {
-        const data = await loginUser({ email, password })
-        console.log(data)
+        await loginUser({ email, password })
         return redirect(pathname)
     } catch(error) {
-        console.log(error)
         return error.message
     }
 }
@@ -70,7 +66,7 @@ export default function Login() {
                 />
                 <button
                     disabled={navigation.state === "submitting"}
-                    className='border w-80 py-2 my-2 rounded bg-sky-600 mx-auto font-bold border-neutral-600  text-gray-50'
+                    className='border w-80 py-2 my-2 rounded bg-blue-600 mx-auto font-bold border-neutral-600  text-gray-50'
                 >
                     {navigation.state === "submitting"
                         ? "Logging in..."
