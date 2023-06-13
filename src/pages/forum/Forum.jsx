@@ -24,7 +24,7 @@ export default function Forum() {
     return (
         <div className="h-full">
             <h1 className='text-2xl font-bold mt-2 py-2 text-center'>
-                Welcome to the Town Square!
+                Welcome to TownSquare!
             </h1>
             <p className="text-center text-lg">The online place to engage with your town community.</p>
             <nav className="container flex flex-col mx-auto p-4">

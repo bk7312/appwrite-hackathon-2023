@@ -14,7 +14,7 @@ export default function Header() {
     
     return (
         <header className="flex place-content-between text-2xl p-4">
-            <Link to=".">Town Square</Link>
+            <Link to=".">TownSquare</Link>
             <nav className="flex gap-4 text-lg items-center">
                 <NavLink 
                     to="." 
