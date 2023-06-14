@@ -10,7 +10,7 @@ import ForumSection, { loader as forumSectionLoader, action as forumSectionActio
 import ForumThread, { loader as forumThreadLoader, action as forumThreadAction } from './pages/forum/ForumThread'
 import NotFound from './pages/NotFound'
 import Layout from './components/Layout'
-import TownLayout from './components/TownLayout'
+import ForumLayout from './components/ForumLayout'
 import Error from './components/Error'
 
 import { checkAuth } from './utils'
@@ -48,7 +48,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     </Route>
     <Route 
       path="forum" 
-      element={<TownLayout />} 
+      element={<ForumLayout />} 
       loader={async ({ request }) => {
         await checkAuth(request)
         return null

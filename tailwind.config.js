@@ -5,13 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        'home-hero': "url('/src/assets/street-1-sm.jpg')",
-        'about-hero': "url('/src/assets/street-wide.jpeg')",
-      }
-    },
+    extend: {},
   },
   plugins: [],
 }
-
